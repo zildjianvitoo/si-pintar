@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer components {
+  .container {
+    @apply max-w-full w-[1440px] mx-auto px-12;
+  }
+
+  .header {
+    @apply w-full h-[100px] leading-[80px];
+  }
+
+  .sticky-navbar {
+    @apply w-full h-[80px] leading-[80px] sticky top-0 left-0 z-[9999] transition-all duration-300;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media only screen and (max-width: 1024px) {
+  .container {
+    @apply w-full px-5;
+  }
+
+  .navigation {
+    @apply w-full h-full fixed top-0 left-0 z-[100] bg-[#00000084] hidden;
+  }
+  .menu {
+    @apply w-[15rem] h-full top-0 right-0 absolute bg-[#fffbf7] z-[200] flex flex-col  items-center justify-center leading-[30px];
+  }
+
+  .show-menu {
+    @apply block;
+  }
 }
