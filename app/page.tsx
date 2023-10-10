@@ -1,4 +1,5 @@
 import Benefit from "@/components/LandingPage/Benefit";
+import Footer from "@/components/LandingPage/Footer";
 import ImageSlider from "@/components/LandingPage/ImageSlider";
 import Intro from "@/components/LandingPage/Intro";
 import Jumbotron from "@/components/LandingPage/Jumbotron";
@@ -14,7 +15,7 @@ export default function Home() {
       />
       <Navbar />
       <main className="overflow-hidden relative z-10">
-        <figure className="absolute top-1/2 z-[-1]">
+        <figure className="absolute top-[25%] z-[-1]">
           <Image
             width={1700}
             height={1800}
@@ -27,6 +28,7 @@ export default function Home() {
         <Intro />
         <Benefit />
         <ImageSlider />
+        <Footer />
       </main>
     </div>
   );

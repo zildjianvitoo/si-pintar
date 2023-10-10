@@ -58,7 +58,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between  relative">
           <div className="flex ">
             <h3 className={`font-semibold text-[24px] ${workSans.className}`}>
-              BeliAja.
+              SiPintar.
             </h3>
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
