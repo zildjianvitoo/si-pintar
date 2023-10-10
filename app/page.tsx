@@ -1,6 +1,9 @@
+import Benefit from "@/components/LandingPage/Benefit";
+import ImageSlider from "@/components/LandingPage/ImageSlider";
 import Intro from "@/components/LandingPage/Intro";
 import Jumbotron from "@/components/LandingPage/Jumbotron";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -11,8 +14,19 @@ export default function Home() {
       />
       <Navbar />
       <main className="overflow-hidden relative z-10">
+        <figure className="absolute top-1/2 z-[-1]">
+          <Image
+            width={1700}
+            height={1800}
+            src={"/assets/images/bg-image.svg"}
+            alt="Gambar Background"
+            className="   "
+          />
+        </figure>
         <Jumbotron />
         <Intro />
+        <Benefit />
+        <ImageSlider />
       </main>
     </div>
   );
