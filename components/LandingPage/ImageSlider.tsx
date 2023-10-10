@@ -13,9 +13,20 @@ export default function ImageSlider({}: Props) {
     infinite: true,
     speed: 1000,
     slidesToShow: 3,
+
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+          centerPadding: "30px",
+        },
+      },
+    ],
   };
 
   return (
