@@ -63,7 +63,7 @@ export default function Navbar() {
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="flex items-center menu gap-[2.7rem]">
-              <GrClose className="absolute block text-2xl top-9 right-7 lg:hidden" />
+              <GrClose className="absolute block text-2xl top-9 right-7 !text-white lg:hidden" />
 
               {navLinks.map((link, index) => (
                 <li key={link.path}>
