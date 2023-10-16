@@ -2,23 +2,26 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Code, Divide } from "lucide-react";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import Heading from "@/components/Heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/Empty";
 import Loader from "@/components/Loader";
-import { formSchema } from "@/lib/formSchema";
-
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
-import { axiosInstance } from "@/lib/axiosInstance";
-import { cn } from "@/lib/utils";
 import UserAvatar from "@/components/UserAvatar";
 import BotAvatar from "@/components/BotAvatar";
+
+import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { Code, Divide } from "lucide-react";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import ReactMarkdown from "react-markdown";
+import { axiosInstance } from "@/lib/axiosInstance";
+import { formSchema } from "@/lib/formSchema";
+import { cn } from "@/lib/utils";
+import { toast } from "react-toastify";
 
 export default function CodeGenerator() {
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
@@ -43,7 +46,7 @@ export default function CodeGenerator() {
       };
       const newMessages = [...messages, userMessages];
 
-      const { data } = await axiosInstance.post("/api/code-generation", {
+      const { data } = await axiosInstance.post("/api/code", {
         messages: newMessages,
       });
 
@@ -51,6 +54,7 @@ export default function CodeGenerator() {
 
       reset();
     } catch (error) {
+      toast.error("Terjadi kesalahan saat menggenerate kode");
       console.log(error);
     } finally {
       router.refresh();
@@ -61,9 +65,9 @@ export default function CodeGenerator() {
     <main>
       <Heading
         title="Generate Kode"
-        description="Our most conversation model"
+        description="Generate kode menggunakan bahasa manusia."
         icon={Code}
-        iconColor="text-[#41605A]"
+        iconColor="text-green-700"
         bgColor="bg-[#D8FFF7]"
       />
       <div className="px-4 lg:px-8">
@@ -89,7 +93,7 @@ export default function CodeGenerator() {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 bg-[#41605A] w-full"
+                className="w-full col-span-12 bg-green-700 lg:col-span-2"
                 disabled={isSubmitting}
               >
                 Generate
@@ -107,7 +111,7 @@ export default function CodeGenerator() {
               <div
                 key={message.content}
                 className={cn(
-                  "p-8 w-full flex items-center gap-x-8 rounded-lg",
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   {
                     "bg-white border border-black/10": message.role === "user",
                     "bg-muted": message.role !== "user",
@@ -115,7 +119,21 @@ export default function CodeGenerator() {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">{message.content}</p>
+                <ReactMarkdown
+                  components={{
+                    pre: ({ node, ...props }) => (
+                      <div className="w-full p-2 my-2 overflow-auto rounded-lg bg-black/10">
+                        <pre {...props} />
+                      </div>
+                    ),
+                    code: ({ node, ...props }) => (
+                      <code className="p-1 rounded-lg bg-black/10" {...props} />
+                    ),
+                  }}
+                  className={"text-sm overflow-hidden leading-7"}
+                >
+                  {message.content || ""}
+                </ReactMarkdown>
               </div>
             ))}
           </div>

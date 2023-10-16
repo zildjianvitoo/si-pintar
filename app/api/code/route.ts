@@ -1,10 +1,17 @@
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const instructionMessage: ChatCompletionMessageParam = {
+  role: "system",
+  content:
+    "Kamu adalah code generator,kamu harus menjawab hanya dengan markdown code snippets.Pakai komen pada kodemu untuk penjelasannya.",
+};
 
 export async function POST(req: Request) {
   try {
@@ -32,7 +39,7 @@ export async function POST(req: Request) {
 
     const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages,
+      messages: [instructionMessage, ...messages],
     });
 
     return NextResponse.json(res.choices[0].message);
