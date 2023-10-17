@@ -31,11 +31,15 @@ import {
 } from "@/lib/formSchema";
 
 import { Card, CardFooter } from "@/components/ui/card";
+import { AxiosError } from "axios";
+import { useProModal } from "@/hooks/useProModal";
 
 export default function ImageGenerator() {
   const [images, setImages] = useState<string[]>([]);
 
   const router = useRouter();
+
+  const { onOpen } = useProModal();
 
   const form = useForm<z.infer<typeof imageGeneratorFormSchema>>({
     resolver: zodResolver(imageGeneratorFormSchema),
@@ -62,7 +66,13 @@ export default function ImageGenerator() {
 
       reset();
     } catch (error) {
-      toast.error("Terjadi kesalahan saat menggenerate gambar");
+      if (error instanceof AxiosError) {
+        if (error?.response?.status === 403) {
+          onOpen();
+        }
+      } else {
+        toast.error("Terjadi kesalahan saat menggenerate kode");
+      }
       console.log(error);
     } finally {
       router.refresh();

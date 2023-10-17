@@ -1,17 +1,11 @@
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { increaseApiLimit, checkApiLimit } from "@/lib/apiLimit";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-const instructionMessage: ChatCompletionMessageParam = {
-  role: "system",
-  content:
-    "Kamu adalah code generator,kamu harus menjawab hanya dengan markdown code snippets.Pakai komen pada kodemu untuk penjelasannya.",
-};
 
 export async function POST(req: Request) {
   try {
@@ -47,11 +41,19 @@ export async function POST(req: Request) {
       });
     }
 
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse("Masa percobaan telah habis", { status: 403 });
+    }
+
     const res = await openai.images.generate({
       prompt,
       n: parseInt(amount, 10),
       size: resolution,
     });
+
+    await increaseApiLimit();
 
     return NextResponse.json(res.data);
   } catch (error) {

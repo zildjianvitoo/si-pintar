@@ -22,11 +22,15 @@ import { axiosInstance } from "@/lib/axiosInstance";
 import { formSchema } from "@/lib/formSchema";
 import { cn } from "@/lib/utils";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+import { useProModal } from "@/hooks/useProModal";
 
 export default function CodeGenerator() {
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
 
   const router = useRouter();
+
+  const { onOpen } = useProModal();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,7 +58,14 @@ export default function CodeGenerator() {
 
       reset();
     } catch (error) {
-      toast.error("Terjadi kesalahan saat menggenerate kode");
+      if (error instanceof AxiosError) {
+        if (error?.response?.status === 403) {
+          onOpen();
+        }
+      } else {
+        toast.error("Terjadi kesalahan saat menggenerate kode");
+      }
+
       console.log(error);
     } finally {
       router.refresh();

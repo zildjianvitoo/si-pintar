@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { increaseApiLimit, checkApiLimit } from "@/lib/apiLimit";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -37,10 +38,18 @@ export async function POST(req: Request) {
       });
     }
 
+    const freeTrial = await checkApiLimit();
+
+    if (!freeTrial) {
+      return new NextResponse("Masa percobaan telah habis", { status: 403 });
+    }
+
     const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [instructionMessage, ...messages],
     });
+
+    await increaseApiLimit();
 
     return NextResponse.json(res.choices[0].message);
   } catch (error) {

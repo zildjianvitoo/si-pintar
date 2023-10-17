@@ -5,8 +5,8 @@ import { turretRoad } from "@/public/fonts";
 import { Code, ImageIcon, LayoutDashboard, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-
-type Props = {};
+import FreeCounter from "./FreeCounter";
+import NoSSR from "./NoSSR";
 
 const routes = [
   {
@@ -34,7 +34,11 @@ const routes = [
   },
 ];
 
-export default function Sidebar({}: Props) {
+type Props = {
+  apiLimitCount: number;
+};
+
+export default function Sidebar({ apiLimitCount = 0 }: Props) {
   const pathname = usePathname();
 
   return (
@@ -68,6 +72,9 @@ export default function Sidebar({}: Props) {
           ))}
         </div>
       </div>
+      <NoSSR>
+        <FreeCounter apiLimitCount={apiLimitCount} />
+      </NoSSR>
     </section>
   );
 }
