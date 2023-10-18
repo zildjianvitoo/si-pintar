@@ -29,10 +29,10 @@ function DashboardPage() {
     <main>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl font-bold text-center md:text-4xl">
-          Explore the power of AI
+          Eksplor Kekuatan dari AI
         </h2>
         <p className="text-sm font-medium text-center text-black/60 md:text-lg">
-          Chat with the smartest AI - Experience the power of AI
+          Chat dengan AI terpintar - Rasakan kehebatan AI
         </p>
       </div>
       <div className="px-4 space-y-4 md:px-20 lg:px-32">

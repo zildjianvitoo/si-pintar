@@ -20,8 +20,7 @@ export default function Jumbotron() {
               className={`text-[40px] lg:text-[62px] xl:text-[80px] font-semibold leading-normal sm:leading-tight ${darkerGrotesque.className} text-white max-w-3xl`}
               data-aos="fade-right"
             >
-              Harnessing Artificial Intelligence Tools for Naturally Image
-              Generator
+              Manfaatkan Alat Kecerdasan Buatan untuk Menghasilkan Gambar Alami
             </h1>
           </div>
 

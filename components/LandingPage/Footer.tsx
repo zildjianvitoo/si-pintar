@@ -1,10 +1,5 @@
 import { darkerGrotesque, turretRoad } from "@/public/fonts";
-import {
-  AiFillGithub,
-  AiFillTwitterCircle,
-  AiFillLinkedin,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
 
 type Props = {};
 
@@ -12,19 +7,19 @@ export default function Footer({}: Props) {
   return (
     <footer className=" bg-[#0F0F0F] py-12 lg:py-20">
       <div className="container">
-        <div className="flex flex-col gap-y-7 md:flex-row justify-between">
+        <div className="flex flex-col justify-between gap-y-7 md:flex-row">
           <div className="flex flex-col">
             <h3
               className={`${turretRoad.className} font-bold text-[25px] md:text-[36px]`}
             >
               SiPintar
             </h3>
-            <p className="mt-1">Managed by Artificial Intelligence</p>
+            <p className="mt-1">Dikelola oleh Tim Pake Nanya</p>
             <div className="flex gap-2 mt-3">
-              <AiFillGithub className="text-2xl hover:-translate-y-1 transition-all cursor-pointer" />
-              <AiFillTwitterCircle className="text-2xl hover:-translate-y-1 transition-all cursor-pointer" />
-              <AiFillLinkedin className="text-2xl hover:-translate-y-1 transition-all cursor-pointer" />
-              <AiFillInstagram className="text-2xl hover:-translate-y-1 transition-all cursor-pointer" />
+              <Github className="text-lg transition-all cursor-pointer hover:-translate-y-1" />
+              <Twitter className="text-lg transition-all cursor-pointer hover:-translate-y-1" />
+              <Linkedin className="text-lg transition-all cursor-pointer hover:-translate-y-1" />
+              <Instagram className="text-lg transition-all cursor-pointer hover:-translate-y-1" />
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-y-7 gap-x-8 lg:gap-x-14 xl:gap-x-20">
@@ -33,30 +28,30 @@ export default function Footer({}: Props) {
                 Ether
               </p>
               <a className="text-[#848895] mt-3 lg:mt-4 text-[15px] cursor-pointer">
-                Grants
+                Donasi
               </a>
               <a className="text-[#848895] mt-2 lg:mt-3 text-[15px] cursor-pointer">
                 Generator
               </a>
               <a className="text-[#848895] mt-2 lg:mt-3 text-[15px] cursor-pointer">
-                Careers
+                Karir
               </a>
               <a className="text-[#848895] mt-2 lg:mt-3 text-[15px] cursor-pointer">
-                Disclaimer
+                Pemberitahuan
               </a>
             </div>
             <div className="flex flex-col">
               <p className={`${darkerGrotesque.className} font-bold text-lg`}>
-                Get Connected
+                Mari Terhubung
               </p>
               <a className="text-[#848895] mt-3 lg:mt-4 text-[15px] cursor-pointer">
-                Services
+                Layanan
               </a>
               <a className="text-[#848895] mt-2 lg:mt-3 text-[15px] cursor-pointer">
                 Blog
               </a>
               <a className="text-[#848895] mt-2 lg:mt-3 text-[15px] cursor-pointer">
-                Newsletter
+                Berita
               </a>
             </div>
           </div>

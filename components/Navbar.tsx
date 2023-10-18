@@ -1,10 +1,12 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import { BiMenu } from "react-icons/bi";
+import { Menu, X } from "lucide-react";
 import React, { useEffect, useRef } from "react";
-import { GrClose } from "react-icons/gr";
-import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { workSans } from "@/public/fonts";
+import { Button } from "./ui/button";
+import { useClerk } from "@clerk/nextjs";
 
 const navLinks = [
   {
@@ -28,6 +30,10 @@ const navLinks = [
 export default function Navbar() {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
+
+  const { user } = useClerk();
 
   const handleScroll = () => {
     window.addEventListener("scroll", () => {
@@ -55,7 +61,7 @@ export default function Navbar() {
   return (
     <header className={`flex items-center header`} ref={headerRef}>
       <div className="container text-white">
-        <div className="flex items-center justify-between  relative">
+        <div className="relative flex items-center justify-between">
           <div className="flex ">
             <h3 className={`font-semibold text-[24px] ${workSans.className}`}>
               SiPintar.
@@ -63,7 +69,7 @@ export default function Navbar() {
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="flex items-center menu gap-[2.7rem]">
-              <GrClose className="absolute block text-2xl top-9 right-7 !text-white lg:hidden" />
+              <X className="absolute block text-2xl top-9 right-7 !text-white fill-white lg:hidden" />
 
               {navLinks.map((link, index) => (
                 <li key={link.path}>
@@ -71,15 +77,23 @@ export default function Navbar() {
                     href={link.path}
                     className={`flex items-center gap-1 tracking-wide text-white`}
                   >
-                    {link.name} <IoIosArrowDown className="mt-1" />
+                    {link.name} <ChevronDown className="mt-1" />
                   </a>
                 </li>
               ))}
+              <Link href={user ? "/dashboard" : "/sign-in"}>
+                <Button
+                  className="px-8 tracking-wide bg-indigo-500/80 hover:bg-indigo-500/70"
+                  onClick={() => router.push("/sign-in")}
+                >
+                  Masuk
+                </Button>
+              </Link>
             </ul>
           </div>
 
           <span className="lg:hidden" onClick={toggleMenu}>
-            <BiMenu className="w-8 h-8 cursor-pointer " />
+            <Menu className="w-8 h-8 cursor-pointer " />
           </span>
         </div>
       </div>

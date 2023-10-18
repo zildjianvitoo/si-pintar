@@ -28,7 +28,7 @@ export default function SubscriptionButton({ isPro = false }: Props) {
   return (
     <Button
       variant={isPro ? "default" : "premium"}
-      className={isPro ? "bg-pink-500 hover:bg-pink-400" : ""}
+      className={isPro ? "bg-indigo-500 hover:bg-indigo-400" : ""}
       onClick={onClick}
       disabled={loading}
     >

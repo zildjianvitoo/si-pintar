@@ -53,30 +53,30 @@ export default function ProModal() {
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className="flex justify-center items-center flex-col gap-y-4 pb-2">
-              <div className="flex items-center gap-x-2 font-bold py-1">
+            <DialogTitle className="flex flex-col items-center justify-center pb-2 gap-y-4">
+              <div className="flex items-center py-1 font-bold gap-x-2">
                 <h3 className="tracking-[0.010rem]">Berlangganan SiPintar</h3>
                 <Badge
-                  className="uppercase text-sm px-3 py-1"
+                  className="px-3 py-1 text-sm uppercase"
                   variant={"premium"}
                 >
                   pro
                 </Badge>
               </div>
             </DialogTitle>
-            <DialogDescription className="text-center pt-2 space-y-3 text-zinc-900 font-medium">
+            <DialogDescription className="pt-2 space-y-3 font-medium text-center text-zinc-900">
               {tools.map((tool) => (
                 <Card
                   key={tool.name}
-                  className="p-3 border-black/5 flex items-center justify-between"
+                  className="flex items-center justify-between p-3 border-black/5"
                 >
                   <div className="flex items-center gap-x-4 ">
                     <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
                       <tool.icon className={cn("w-6 h-6", tool.color)} />
                     </div>
-                    <p className=" font-semibold text-sm">{tool.name}</p>
+                    <p className="text-sm font-semibold ">{tool.name}</p>
                   </div>
-                  <Check className="text-pink-500 w-5 h-5" />
+                  <Check className="w-5 h-5 text-indigo-500" />
                 </Card>
               ))}
             </DialogDescription>
@@ -85,7 +85,7 @@ export default function ProModal() {
             <Button
               size={"lg"}
               variant={"premium"}
-              className=" w-full"
+              className="w-full "
               disabled={loading}
               onClick={onSubscribe}
             >
