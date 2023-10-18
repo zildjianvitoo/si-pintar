@@ -4,9 +4,10 @@ import { Menu, X } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { workSans } from "@/public/fonts";
+import { turretRoad, workSans } from "@/public/fonts";
 import { Button } from "./ui/button";
 import { useClerk } from "@clerk/nextjs";
+import Image from "next/image";
 
 const navLinks = [
   {
@@ -62,8 +63,11 @@ export default function Navbar() {
     <header className={`flex items-center header`} ref={headerRef}>
       <div className="container text-white">
         <div className="relative flex items-center justify-between">
-          <div className="flex ">
-            <h3 className={`font-semibold text-[24px] ${workSans.className}`}>
+          <div className="flex gap-4 items-center">
+            <figure className="w-12 h-12 mt-2">
+              <img src={"/logo.png"} alt="Logo SiPintar" className="w-full" />
+            </figure>
+            <h3 className={`font-semibold text-[24px] ${turretRoad.className}`}>
               SiPintar.
             </h3>
           </div>

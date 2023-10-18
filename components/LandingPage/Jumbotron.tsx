@@ -15,7 +15,7 @@ export default function Jumbotron() {
     <section className="py-14">
       <div className="container h-full">
         <div className="flex flex-col items-center gap-y-12 gap-x-14 lg:gap-x-10 md:flex-row">
-          <div className="flex flex-col">
+          <div className="flex gap-4">
             <h1
               className={`text-[40px] lg:text-[62px] xl:text-[80px] font-semibold leading-normal sm:leading-tight ${darkerGrotesque.className} text-white max-w-3xl`}
               data-aos="fade-right"
