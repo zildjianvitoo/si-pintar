@@ -21,7 +21,7 @@ import ReactMarkdown from "react-markdown";
 import { axiosInstance } from "@/lib/axiosInstance";
 import { formSchema } from "@/lib/formSchema";
 import { cn } from "@/lib/utils";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AxiosError } from "axios";
 import { useProModal } from "@/hooks/useProModal";
 
@@ -61,12 +61,10 @@ export default function CodeGenerator() {
       if (error instanceof AxiosError) {
         if (error?.response?.status === 403) {
           onOpen();
+        } else {
+          toast.error("Terjadi kesalahan saat menggenerate kode");
         }
-      } else {
-        toast.error("Terjadi kesalahan saat menggenerate kode");
       }
-
-      console.log(error);
     } finally {
       router.refresh();
     }
@@ -104,7 +102,7 @@ export default function CodeGenerator() {
                 )}
               />
               <Button
-                className="w-full col-span-12 bg-green-700 lg:col-span-2"
+                className="w-full col-span-12 bg-green-700 hover:bg-green-600  lg:col-span-2"
                 disabled={isSubmitting}
               >
                 Generate

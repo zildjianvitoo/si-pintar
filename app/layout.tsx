@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import ModalProvider from "@/components/Provider/ModalProvider";
+import ToastProvider from "@/components/Provider/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Si Pintar",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <ModalProvider />
+          <ToastProvider />
           {children}
         </body>
       </html>

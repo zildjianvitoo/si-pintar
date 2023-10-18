@@ -5,9 +5,9 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Sidebar from "./Sidebar";
 import NoSSR from "./NoSSR";
 
-type Props = { apiLimitCount: number };
+type Props = { apiLimitCount: number; isPro: boolean };
 
-export default function MobileSidebar({ apiLimitCount }: Props) {
+export default function MobileSidebar({ apiLimitCount, isPro }: Props) {
   return (
     <NoSSR>
       <Sheet>
@@ -17,7 +17,7 @@ export default function MobileSidebar({ apiLimitCount }: Props) {
           </Button>
         </SheetTrigger>
         <SheetContent side={"left"} className="p-0">
-          <Sidebar apiLimitCount={apiLimitCount} />
+          <Sidebar isPro={isPro} apiLimitCount={apiLimitCount} />
         </SheetContent>
       </Sheet>
     </NoSSR>

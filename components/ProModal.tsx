@@ -86,6 +86,7 @@ export default function ProModal() {
               size={"lg"}
               variant={"premium"}
               className=" w-full"
+              disabled={loading}
               onClick={onSubscribe}
             >
               Berlangganan <Zap className="w-4 h-4 ml-2 fill-white" />

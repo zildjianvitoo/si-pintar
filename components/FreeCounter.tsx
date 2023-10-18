@@ -7,11 +7,17 @@ import { Button } from "./ui/button";
 import { Zap } from "lucide-react";
 import { useProModal } from "@/hooks/useProModal";
 
-type Props = { apiLimitCount: number };
+type Props = { apiLimitCount: number; isPro: boolean };
 
-export default function FreeCounter({ apiLimitCount = 0 }: Props) {
+export default function FreeCounter({
+  apiLimitCount = 0,
+  isPro = false,
+}: Props) {
   const { onOpen } = useProModal();
 
+  if (isPro) {
+    return null;
+  }
   return (
     <div className="px-3">
       <Card className="bg-white/10 border-0">

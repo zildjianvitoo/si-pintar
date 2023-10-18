@@ -21,7 +21,7 @@ import { Download, ImageIcon } from "lucide-react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 import { axiosInstance } from "@/lib/axiosInstance";
 import {
@@ -165,7 +165,7 @@ export default function ImageGenerator() {
                 )}
               />
               <Button
-                className="w-full col-span-12 bg-pink-700 lg:col-span-2"
+                className="w-full col-span-12 bg-pink-700 hover:bg-pink-600 lg:col-span-2"
                 disabled={isSubmitting}
               >
                 Generate
