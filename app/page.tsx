@@ -12,6 +12,7 @@ export default function Home() {
       <img
         src="/assets/images/elipse-topleft.svg"
         className="absolute top-0 left-0"
+        alt="Elipse decor"
       />
       <Navbar />
       <main className="overflow-hidden relative z-10">

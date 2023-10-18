@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import ModalProvider from "@/components/Provider/ModalProvider";
 import ToastProvider from "@/components/Provider/ToastProvider";
+import CrispProvider from "@/components/Provider/CrispProvider";
 
 export const metadata: Metadata = {
   title: "Si Pintar",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <CrispProvider />
         <body>
           <ModalProvider />
           <ToastProvider />
