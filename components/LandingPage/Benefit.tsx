@@ -23,7 +23,7 @@ export default function Benefit({}: Props) {
                 efisiensi baru.
               </p>
 
-              <div className="flex flex-col items-start justify-end gap-6 mt-auto lg:flex-row md:justify-start">
+              <div className="flex flex-col items-start justify-end gap-6 mt-10 lg:mt-auto lg:flex-row md:justify-start">
                 <div className="flex items-center gap-4 border-white border rounded-[30px] px-11 py-2 cursor-pointer">
                   <p className="uppercase">Youtube</p>
                   <Youtube className="text-xl text-[#ED1D24]" />
