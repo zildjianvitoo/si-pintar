@@ -11,7 +11,7 @@ export default function Benefit({}: Props) {
       <div className="container z-10">
         <div className=" flex flex-col gap-12 lg:gap-20  xl:max-w-[80%] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 ">
-            <div className="flex flex-col bg-[#19161C] rounded-xl p-6 lg:p-10">
+            <div className="flex flex-col bg-[#19161C] rounded-xl p-6 lg:p-10 ">
               <h3
                 className={`text-[30px] lg:text-[40px] leading-[40px] ${darkerGrotesque.className} lg:max-w-[90%] `}
               >
