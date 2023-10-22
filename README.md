@@ -9,11 +9,11 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 
-OPENAI_API_KEY=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
+OPENAI_API_KEY=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
 
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-DATABASE_URL='mysql://ldvquf6eklrrsciz9eus:pscale_pw_8HB1NziTXZ38rANKAAAR8m0hPrynzXJHtBFWzBOooCp@aws.connect.psdb.cloud/beli-aja?sslaccept=strict'
+DATABASE_URL='mysql://s4chyix9igmb6voe0pmi:pscale_pw_hPvkbYOQtkoKon8PWoVjAkw6Jv0Dd19TtDvo27Rbv35@aws.connect.psdb.cloud/beli-aja?sslaccept=strict'
 
 STRIPE_API_SECRET_KEY=sk_test_51O2EAmEqsaPnySevMNCMed6CFnUEmnDPZQ9chQoeAC1SWDv0z7GhkyQhlXyOjjtOGSSn58FT7Q2pC7ZOW64Byg4U00WjyilA48
 
